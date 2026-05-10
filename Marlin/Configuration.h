@@ -176,6 +176,17 @@
 //#define E7_DRIVER_TYPE A4988
 
 /**
+ * Added By User (Bilal Korkut)
+ * This part below in lines 183-186 is added by the user to connect the 
+ * independent I axis to the Z2 pin
+ */
+#define I_STEP_PIN      Z2_STEP_PIN
+#define I_DIR_PIN       Z2_DIR_PIN
+#define I_ENABLE_PIN    Z2_ENABLE_PIN
+#define I_SERIAL_TX_PIN Z2_SERIAL_TX_PIN
+#define I_SERIAL_RX_PIN Z2_SERIAL_RX_PIN
+
+/**
  * Additional Axis Settings
  *
  * Define AXISn_ROTATES for all axes that rotate or pivot.
