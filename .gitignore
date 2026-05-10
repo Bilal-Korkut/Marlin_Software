@@ -34,6 +34,7 @@ out-language/
 # OS
 applet/
 .DS_Store
+._*
 
 # Compiled C++ Object files
 *.slo
