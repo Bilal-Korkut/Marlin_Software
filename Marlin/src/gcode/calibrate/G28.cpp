@@ -372,6 +372,16 @@ void GcodeSuite::G28() {
         // This is also permitted when homing with a Z endstop.
         if (TERN0(HOME_Z_FIRST, doZ)) homeaxis(Z_AXIS);
 
+        // Custom MML Bioprinter order: when homing all axes, home A/I right after Z.
+        // The remaining secondary-axis block below skips I when this has already run.
+        #if HAS_I_AXIS
+          bool did_home_i_after_z = false;
+          if (TERN0(HOME_Z_FIRST, doI)) {
+            homeaxis(I_AXIS);
+            did_home_i_after_z = true;
+          }
+        #endif
+
         // 'R' to specify a specific raise. 'R0' indicates no raise, e.g., for recovery.resume
         // When 'R0' is used, there should already be adequate clearance, e.g., from homing Z to max.
         const bool seenR = parser.seenval('R');
@@ -493,7 +503,7 @@ void GcodeSuite::G28() {
         #endif
 
         SECONDARY_AXIS_CODE(
-          if (doI) homeaxis(I_AXIS),
+          if (doI && TERN1(HAS_I_AXIS, !did_home_i_after_z)) homeaxis(I_AXIS),
           if (doJ) homeaxis(J_AXIS),
           if (doK) homeaxis(K_AXIS),
           if (doU) homeaxis(U_AXIS),
