@@ -1819,7 +1819,7 @@
 #define Y_ENABLE_ON LOW
 #define Z_ENABLE_ON LOW
 #define E_ENABLE_ON LOW // For all extruders
-//#define I_ENABLE_ON LOW
+#define I_ENABLE_ON LOW
 //#define J_ENABLE_ON LOW
 //#define K_ENABLE_ON LOW
 //#define U_ENABLE_ON LOW
