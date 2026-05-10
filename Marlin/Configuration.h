@@ -1242,6 +1242,13 @@
 #endif
 
 /**
+ * Added By User (Bilal Korkut)
+ * This part below in line 1238 is added by the user to counteract an error that is being 
+ * created after activating the I axis
+ */
+#define I_STOP_PIN Z2_DIAG_PIN
+
+/**
  * Endstop "Hit" State
  * Set to the state (HIGH or LOW) that applies to each endstop.
  */
